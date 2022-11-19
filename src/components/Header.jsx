@@ -1,11 +1,22 @@
-import React from 'react'
+import React, { useState } from 'react'
 import logo from '../assets/img/logo.png'
 
 import { RiSearchLine } from 'react-icons/ri'
+import { Link, useNavigate } from 'react-router-dom'
 
 import Wrapper from '../assets/wrappers/Header.js'
-import { Link } from 'react-router-dom'
+
 const Header = () => {
+  const [query, setQuery] = useState('')
+  const navigate = useNavigate()
+
+  const onSubmit = (e) => {
+    e.preventDefault()
+
+    if (!query) return
+    navigate(`course/search/${query}`)
+  }
+
   return (
     <Wrapper>
       <div className='nav container'>
@@ -15,12 +26,16 @@ const Header = () => {
           </Link>
         </div>
 
-        <form className='search-bar'>
+        <form className='search-bar' onSubmit={onSubmit}>
           <div>
             <div className='icon'>
               <RiSearchLine />
             </div>
-            <input type='text' className='input-search' />
+            <input
+              type='text'
+              className='input-search'
+              onChange={(e) => setQuery(e.target.value)}
+            />
           </div>
         </form>
 

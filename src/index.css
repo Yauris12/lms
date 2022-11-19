@@ -1,7 +1,9 @@
 *,
 ::after,
 ::before {
-  box-sizing: border-box;
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
 }
 
 html {
@@ -22,7 +24,7 @@ html {
   --color-azul-oscuro: #385185;
   --color-disabled: #b2dffc;
   --color-gris: #d0d0d0;
-  --background-color: #fafafa;
+  --background-color: #;
   --white: #fff;
   --red-dark: #ff0000;
   --green-light: #d1e7dd;
@@ -129,6 +131,6 @@ a {
 }
 
 .container {
-  max-width: 95%;
+  max-width: 90%;
   margin: 0 auto;
 }

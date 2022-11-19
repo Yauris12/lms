@@ -6,6 +6,7 @@ import Home from '../pages/Home'
 import Login from '../pages/Login'
 import Register from '../pages/Register'
 import CouseDetails from '../pages/CouseDetails'
+import Courses from '../pages/Courses'
 
 const AppRoute = () => {
   console.log()
@@ -18,6 +19,7 @@ const AppRoute = () => {
           <Route path='/login' element={<Login />} />
           <Route path='/register' element={<Register />} />
           <Route path='/course/:idCourse' element={<CouseDetails />} />
+          <Route path='course/search/:query' element={<Courses />} />
         </Routes>
       </Router>
     </>
