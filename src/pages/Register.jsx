@@ -8,7 +8,10 @@ import {
   RiLockPasswordFill,
 } from 'react-icons/ri'
 import Wrapper from '../assets/wrappers/Register'
+import { useUserContext } from '../context/userContext/Usercontext'
 const Register = () => {
+  const { user, registerUser, showAlert, alertText } = useUserContext()
+
   const [values, setValues] = useState({
     name: '',
     lastname: '',
@@ -24,11 +27,22 @@ const Register = () => {
     setValues({ ...values, [name]: value })
   }
 
+  const currentUser = {
+    nombre: name,
+    apellidos: lastname,
+    correo: email,
+    password,
+  }
+  const onSubmit = (e) => {
+    e.preventDefault()
+    registerUser(currentUser)
+  }
+
   return (
     <Wrapper>
       <p className='title'>Regístrate y comienza a aprender.</p>
 
-      <form>
+      <form onSubmit={onSubmit}>
         <InputText
           placeholder='nombre'
           type='text'
@@ -63,11 +77,12 @@ const Register = () => {
           onChange={handleChange}
         />
         <input
-          type='button '
+          type='submit'
           value='Registrate'
           className='btn btn-primary input-btn '
         />
       </form>
+      {showAlert && <h3>{alertText}</h3>}
     </Wrapper>
   )
 }

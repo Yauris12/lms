@@ -1,9 +1,10 @@
 import axios from 'axios'
 
 const axiosClient = axios.create({
-  baseURL: process.env.REACT_APP_API_LMS,
+  withCredentials: true,
   headers: {
-    'content-type': 'application/json',
+    'Access-Control-Allow-Origin': '*',
+    'content-type': 'application/x-www-form-urlencoded',
   },
 })
 
@@ -14,6 +15,10 @@ axiosClient.interceptors.response.use((response) => {
   return (
     response,
     (error) => {
+      if (error.response.status === 401) {
+        // logoutUser()
+      }
+
       throw error
     }
   )

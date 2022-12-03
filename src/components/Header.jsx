@@ -5,10 +5,12 @@ import { RiSearchLine } from 'react-icons/ri'
 import { Link, useNavigate } from 'react-router-dom'
 
 import Wrapper from '../assets/wrappers/Header.js'
+import { useUserContext } from '../context/userContext/Usercontext'
 
 const Header = () => {
   const [query, setQuery] = useState('')
   const navigate = useNavigate()
+  const { user, logoutUser } = useUserContext()
 
   const onSubmit = (e) => {
     e.preventDefault()
@@ -16,7 +18,7 @@ const Header = () => {
     if (!query) return
     navigate(`course/search/${query}`)
   }
-
+  console.log(user)
   return (
     <Wrapper>
       <div className='nav container'>
@@ -39,14 +41,29 @@ const Header = () => {
           </div>
         </form>
 
-        <div className='button-init'>
-          <Link to='login'>
-            <button className='btn btn-secondary'>Iniciar Sesion</button>
-          </Link>
-          <Link to='register'>
-            <button className='btn btn-primary'>Registrarse</button>
-          </Link>
-        </div>
+        {!user && (
+          <div className='button-init'>
+            <Link to='login'>
+              <button className='btn btn-secondary'>Iniciar Sesion</button>
+            </Link>
+            <Link to='register'>
+              <button className='btn btn-primary'>Registrarse</button>
+            </Link>
+          </div>
+        )}
+        {user && (
+          <div className='button-init'>
+            <Link to='login'>
+              <button className='btn btn-secondary'>Mis cursos</button>
+            </Link>
+
+            <button className='btn btn-primary' onClick={logoutUser}>
+              Cerrar Sesion
+            </button>
+
+            <div className='user-radius'>{user.nombre.substring(0, 1)}</div>
+          </div>
+        )}
       </div>
     </Wrapper>
   )

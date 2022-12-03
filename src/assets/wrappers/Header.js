@@ -14,7 +14,20 @@ const Wrapper = styled.header`
   .logo {
     width: 20rem;
   }
+  .user-radius {
+    font-size: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    background: black;
+    width: 40px;
+    height: 40px;
+    color: #fff;
+  }
   .search-bar {
     width: 50rem;
     border: 1px solid black;

@@ -5,11 +5,14 @@ import 'normalize.css'
 import reportWebVitals from './reportWebVitals'
 import AppRoute from './Routes/AppRoute'
 import 'swiper/css'
+import { UserProvider } from './context/userContext/Usercontext'
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
   <React.StrictMode>
-    <AppRoute />
+    <UserProvider>
+      <AppRoute />
+    </UserProvider>
   </React.StrictMode>
 )
 
