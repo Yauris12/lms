@@ -8,4 +8,8 @@ const register = (currentUser) => {
   return axiosClient.post('user/create', currentUser)
 }
 
-export { login, register }
+const pagarCurso = (currentUser) => {
+  return axiosClient.post('curso/comprar', currentUser)
+}
+
+export { login, register, pagarCurso }

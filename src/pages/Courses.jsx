@@ -13,7 +13,7 @@ const Courses = () => {
 
       <div className='flex-courses'>
         <Filters />
-        <ListView />
+        <ListView query={query} />
       </div>
     </Wrapper>
   )

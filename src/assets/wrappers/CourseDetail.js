@@ -45,8 +45,13 @@ const Wrapper = styled.div`
   .img-container {
     height: 20rem;
     width: 100%;
-    background: red;
   }
+  .imgg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
   .price {
     margin-top: 2rem;
     font-size: 3.5rem;

@@ -4,16 +4,21 @@ import './index.css'
 import 'normalize.css'
 import reportWebVitals from './reportWebVitals'
 import AppRoute from './Routes/AppRoute'
+
+import 'antd/dist/reset.css'
 import 'swiper/css'
+import './index.css'
+import 'normalize.css'
 import { UserProvider } from './context/userContext/Usercontext'
+import { CartProvider } from './context/useCart/CartContext'
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
-  <React.StrictMode>
-    <UserProvider>
+  <UserProvider>
+    <CartProvider>
       <AppRoute />
-    </UserProvider>
-  </React.StrictMode>
+    </CartProvider>
+  </UserProvider>
 )
 
 // If you want to start measuring performance in your app, pass a function

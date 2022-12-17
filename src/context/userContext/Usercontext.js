@@ -23,7 +23,6 @@ const removeUserFromLocalStorage = () => {
 const user1 = localStorage.getItem('user')
 
 const UserContext = React.createContext()
-console.log('probando', localStorage.getItem('user'))
 const initialState = {
   isLoading: false,
   userLoading: true,
@@ -39,9 +38,7 @@ const UserProvider = ({ children }) => {
     dispatch({ type: SETUP_USER_BEGIN })
 
     try {
-      console.log(currentUser)
       const data = await login(currentUser)
-      console.log('Estamos bien ', data)
 
       dispatch({
         type: SETUP_USER_SUCCESS,
@@ -49,8 +46,6 @@ const UserProvider = ({ children }) => {
       })
       addUserToLocalStorage(data[0])
     } catch (error) {
-      console.log('Estamos mal ', error.response.data.msg)
-
       dispatch({
         type: SETUP_USER_ERROR,
         payload: { msg: error.response.data.msg },
@@ -62,17 +57,13 @@ const UserProvider = ({ children }) => {
     dispatch({ type: SETUP_USER_BEGIN })
 
     try {
-      console.log(currentUser)
       const data = await register(currentUser)
-      console.log('Estamos bien ', data)
 
       dispatch({
         type: REGISTER_USER_SUCCESS,
         payload: { alertText: data },
       })
     } catch (error) {
-      console.log('Estamos mal ', error)
-
       dispatch({
         type: REGISTER_USER_ERROR,
         payload: { msg: error },

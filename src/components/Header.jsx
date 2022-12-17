@@ -1,24 +1,24 @@
 import React, { useState } from 'react'
 import logo from '../assets/img/logo.png'
 
-import { RiSearchLine } from 'react-icons/ri'
+import { RiSearchLine, RiShoppingCart2Fill } from 'react-icons/ri'
 import { Link, useNavigate } from 'react-router-dom'
 
 import Wrapper from '../assets/wrappers/Header.js'
 import { useUserContext } from '../context/userContext/Usercontext'
+import { useCartContext } from '../context/useCart/CartContext'
 
 const Header = () => {
   const [query, setQuery] = useState('')
   const navigate = useNavigate()
   const { user, logoutUser } = useUserContext()
-
+  const { total_items } = useCartContext()
   const onSubmit = (e) => {
     e.preventDefault()
 
     if (!query) return
     navigate(`course/search/${query}`)
   }
-  console.log(user)
   return (
     <Wrapper>
       <div className='nav container'>
@@ -43,6 +43,11 @@ const Header = () => {
 
         {!user && (
           <div className='button-init'>
+            <Link to='cart' className='icon1'>
+              <RiShoppingCart2Fill size={25} />
+              <div className='circle'>{total_items}</div>
+            </Link>
+
             <Link to='login'>
               <button className='btn btn-secondary'>Iniciar Sesion</button>
             </Link>
@@ -51,16 +56,19 @@ const Header = () => {
             </Link>
           </div>
         )}
+
         {user && (
           <div className='button-init'>
-            <Link to='login'>
+            <Link to='cart' className='icon1'>
+              <RiShoppingCart2Fill size={25} />
+              <div className='circle'>{total_items}</div>
+            </Link>
+            <Link to='MisCursos'>
               <button className='btn btn-secondary'>Mis cursos</button>
             </Link>
-
             <button className='btn btn-primary' onClick={logoutUser}>
               Cerrar Sesion
             </button>
-
             <div className='user-radius'>{user.nombre.substring(0, 1)}</div>
           </div>
         )}

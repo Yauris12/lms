@@ -14,6 +14,24 @@ const Wrapper = styled.header`
   .logo {
     width: 20rem;
   }
+  .icon1 {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+  }
+  .circle {
+    position: absolute;
+    top: 1px;
+    right: -6px;
+    background-color: var(--primary);
+    font-weight: bold;
+    color: white;
+    width: 19px;
+    height: 19px;
+    border-radius: 50px;
+    text-align: center;
+  }
   .user-radius {
     font-size: 2rem;
     display: flex;

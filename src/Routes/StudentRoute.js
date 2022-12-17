@@ -1,6 +1,6 @@
 import { Navigate } from 'react-router-dom'
 
-const AdminRoute = ({ user, children }) => {
+const StudentRoute = ({ user, children }) => {
   if (!user) {
     return <Navigate to='/' replace />
   }
